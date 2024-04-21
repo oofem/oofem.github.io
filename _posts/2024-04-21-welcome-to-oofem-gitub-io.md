@@ -7,6 +7,7 @@ categories:
 tags:
   - announcement
 ---
+
 This site is set up to provide a platform for blogging about the OOFEM project. 
 
 Particularly, the following posts are welcome:
