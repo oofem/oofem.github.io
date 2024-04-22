@@ -20,6 +20,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   transport and fluid mechanics problems. 
   The aim of this project is to develop efficient and robust tool for FEM computations 
   as well as to provide modular and extensible environment.
+logo: "/assets/images/oofem-logo.blog.png"
 #twitter_username: username
 github_username: oofem
 minimal_mistakes_skin: air
