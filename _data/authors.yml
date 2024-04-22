@@ -1,7 +1,7 @@
 Borek Patzak:
   name        : "Borek Patzak"
   bio         : "Pasionate about numerical mechanics, simulation software design, and high-performance computing."
-  avatar      : "/assets/images/bio-photo-2.jpg"
+  avatar      : "/assets/images/borek_patzak_photo.png"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
