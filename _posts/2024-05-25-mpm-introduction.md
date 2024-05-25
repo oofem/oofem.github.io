@@ -28,15 +28,16 @@ I will ilustrate the concept using oofem python bindings, which allows for fast 
 In the example below, we reuse already defined terms in oofem, but it is possible to define your own terms, interpolations, etc.
 
 As an example, consider the weak form of equlibrium equations:
+
 $$ \int_\Omega (\partial w)^T \sigma (\partial u)\ d\Omega = \int_\Omega w^T \rho g d\Omega + \int_\Gamma w^T t d\Gamma $$
 
 where
 * u,w are variables (fileds), represented by _Variable_ class instances
-* $\left[ (\partial w)^T \sigma (\partial u)\right] $ and $\left[ (w)^Tf \right]$ are Terms, parametrized (to be evaluated) by u,w, represented by classes _BTSigmaTerm_ and _NTfTerm_ (derived from parent _Term_ class).
+* $`\left[ (\partial w)^T \sigma (\partial u)\right] `$ and $\left[ (w)^Tf \right]$ are Terms, parametrized (to be evaluated) by u,w, represented by classes _BTSigmaTerm_ and _NTfTerm_ (derived from parent _Term_ class).
 
-As this in general yields to a nonlinear system of equations, each term can evaluate
-* residual contribution for given element, esentially evaluating itself with all variables known. In our example this corresponds to evaluating $$\int_\Omega^e (\partial N)^T\sigma(\partial N r_u)\ d\Omega^e$$ for the term on left.
-* its linearization, cooresponding in our case to $$\int_\Omega^e (\partial N)^T {{\partial \sigma}\over{\partial \varepsilon}} (\partial N)\ d\Omega^e$$, for the term on the left.
+As this in general yields to a nonlinear system of equations, the term on left hand side evaluates
+* residual contribution for given element, esentially evaluating itself with all variables known. In our example this corresponds to evaluating $`\int_\Omega^e (\partial N)^T\sigma(\partial N r_u)\ d\Omega^e`$
+* its linearization, cooresponding in our case to $`\int_\Omega^e (\partial N)^T {{\partial \sigma}\over{\partial \varepsilon}} (\partial N)\ d\Omega^e`$.
 
 
 ### Simple example
