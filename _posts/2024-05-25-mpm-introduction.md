@@ -37,7 +37,7 @@ where
 
 As this in general yields to a nonlinear system of equations, the term on left hand side evaluates
 * residual contribution for given element, esentially evaluating itself with all variables known. In our example this corresponds to evaluating $`\int_\Omega^e (\partial N)^T\sigma(\partial N r_u)\ d\Omega^e`$
-* its linearization, cooresponding in our case to $`\int_\Omega^e (\partial N)^T {{\partial \sigma}\over{\partial \varepsilon}} (\partial N)\ d\Omega^e`$.
+* its linearization, cooresponding in our case to $`\int_\Omega^e (\partial N)^T \frac{\partial \sigma}{\partial \varepsilon} (\partial N)\ d\Omega^e`$.
 
 
 ### Simple example
