@@ -14,13 +14,13 @@ What is MPM?
 MPM is new multiphysic OOFEM module, developped to make implementation of multiphysics problems more simple. 
 
 What are the design ideas behind MPM?
-* MPM defines Variables, Terms, Integrals as resuable blocks to create multiphysics formulations
-* Variables represent unknown fields (or test felds) in a weak form of the problem. The variable has its interpolation, type (scalar, vector) and physical meaning defined.
-* Terms represent an integrand in weak formulation to be evaluated (integrated). Term definition ios independent on underlying element geometry and interpolation. It defines two key methods:
+* MPM defines **Interpolations**, **Variables**, **Terms**, **Integrals** as resuable blocks to create multiphysics formulations
+* **Variables** represent unknown fields (or test felds) in a weak form of the problem. The variable has its interpolation, type (scalar, vector) and physical meaning defined.
+* **Terms** represent an integrand in weak formulation to be evaluated (integrated). Term definition ios independent on underlying element geometry and interpolation. It defines two key methods:
     *  method to evaluate the term value, typycally contributing to RHS of discrete system.
     *  method to evaluate the consistent linearization of the term, so if Term is T(u), depending on unknown u, this term evaluates dT/du, which typically contributes to the LHS. 
-* Interpolations representing different FE interpolations.
-* Integral represents the integral of term in a weak form. It can compute its contributions to the dicrete set of equations. 
+* **Interpolations** are representing different FE interpolations.
+* **Integral** represents the integral of term in a weak form. It can compute its contributions to the dicrete set of equations. 
 
 The concept allows for parametrization with different element geometries and interpolations. Also, the components (interpolations, terms) can be reused/shared between different formulations.
 I will ilustrate the concept using oofem python bindings, which allows for fast prototyping.
@@ -33,11 +33,11 @@ $$ \int_\Omega (\partial w)^T \sigma (\partial u)\ d\Omega = \int_\Omega w^T \rh
 
 where
 * u,w are variables (fileds), represented by _Variable_ class instances
-* $`\left[ (\partial w)^T \sigma (\partial u)\right] `$ and $\left[ (w)^Tf \right]$ are Terms, parametrized (to be evaluated) by u,w, represented by classes _BTSigmaTerm_ and _NTfTerm_ (derived from parent _Term_ class).
+* $\left[ (\partial w)^T \sigma (\partial u)\right] $ and $\left[ (w)^Tf \right]$ are Terms, parametrized (to be evaluated) by u,w, represented by classes _BTSigmaTerm_ and _NTfTerm_ (derived from parent _Term_ class).
 
 As this in general yields to a nonlinear system of equations, the term on left hand side evaluates
-* residual contribution for given element, esentially evaluating itself with all variables known. In our example this corresponds to evaluating $`\int_\Omega^e (\partial N)^T\sigma(\partial N r_u)\ d\Omega^e`$
-* its linearization, cooresponding in our case to $`\int_\Omega^e (\partial N)^T \frac{\partial \sigma}{\partial \varepsilon} (\partial N)\ d\Omega^e`$.
+* residual contribution for given element, esentially evaluating itself with all variables known. In our example this corresponds to evaluating $\int_\Omega^e (\partial N)^T\sigma(\partial N r_u)\ d\Omega^e$
+* its linearization, cooresponding in our case to $\int_\Omega^e (\partial N)^T \frac{\partial \sigma}{\partial \varepsilon} (\partial N)\ d\Omega^e$.
 
 
 ### Simple example
