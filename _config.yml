@@ -97,3 +97,5 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+head-scripts:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML
