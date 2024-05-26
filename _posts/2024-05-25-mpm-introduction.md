@@ -33,7 +33,7 @@ $$ \int_\Omega (\partial w)^T \sigma (\partial u)\ d\Omega = \int_\Omega w^T \rh
 
 where
 * u,w are variables (fileds), represented by _Variable_ class instances
-* $\left[ (\partial w)^T \sigma (\partial u)\right] $ and $\left[ (w)^Tf \right]$ are Terms, parametrized (to be evaluated) by u,w, represented by classes _BTSigmaTerm_ and _NTfTerm_ (derived from parent _Term_ class).
+* $\left[ (\partial w)^T \sigma (\partial u)\right] $ and $\left[ (w)^Tt \right]$ are Terms, parametrized (to be evaluated) by u,w, represented by classes _BTSigmaTerm_ and _NTfTerm_ (derived from parent _Term_ class).
 
 As this in general yields to a nonlinear system of equations, the term on left hand side evaluates
 * residual contribution for given element, esentially evaluating itself with all variables known. In our example this corresponds to evaluating $\int_\Omega^e (\partial N)^T\sigma(\partial N r_u)\ d\Omega^e$
