@@ -8,7 +8,7 @@ tags:
   - tutorial mpm
 ---
 
-## On the emerging MPM symbolic concept in OOFEM
+## First steps with new OOFEM multi-physics module (MPM)
 
 What is MPM?
 MPM is new multiphysic OOFEM module, developped to make implementation of multiphysics problems more simple. 
@@ -16,7 +16,7 @@ MPM is new multiphysic OOFEM module, developped to make implementation of multip
 What are the design ideas behind MPM?
 * MPM defines **Interpolations**, **Variables**, **Terms**, **Integrals** as resuable blocks to create multiphysics formulations
 * **Variables** represent unknown fields (or test felds) in a weak form of the problem. The variable has its interpolation, type (scalar, vector) and physical meaning defined.
-* **Terms** represent an integrand in weak formulation to be evaluated (integrated). Term definition ios independent on underlying element geometry and interpolation. It defines two key methods:
+* **Terms** represent an integrand in weak formulation to be evaluated (integrated). Term definition is independent on underlying element geometry and interpolation. It defines two key methods:
     *  method to evaluate the term value, typycally contributing to RHS of discrete system.
     *  method to evaluate the consistent linearization of the term, so if Term is T(u), depending on unknown u, this term evaluates dT/du, which typically contributes to the LHS. 
 * **Interpolations** are representing different FE interpolations.
@@ -35,9 +35,9 @@ where
 * u,w are variables (fileds), represented by _Variable_ class instances
 * $\left[ (\partial w)^T \sigma (\partial u)\right] $ and $\left[ (w)^Tt \right]$ are Terms, parametrized (to be evaluated) by u,w, represented by classes _BTSigmaTerm_ and _NTfTerm_ (derived from parent _Term_ class).
 
-As this in general yields to a nonlinear system of equations, the term on left hand side evaluates
-* residual contribution for given element, esentially evaluating itself with all variables known. In our example this corresponds to evaluating $\int_\Omega^e (\partial N)^T\sigma(\partial N r_u)\ d\Omega^e$
-* its linearization, cooresponding in our case to $\int_\Omega^e (\partial N)^T \frac{\partial \sigma}{\partial \varepsilon} (\partial N)\ d\Omega^e$.
+When term is evaluated, the interpolations of the test and uknown fields as well as the element geometry are substituted. In our example, the approximations on the element level are $u^e=\sum N_u r_u$ and $w^e=\sum N_w r_w$. As this in general yields to a nonlinear system of equations, the term on left hand side evaluates
+* residual contribution for given element, esentially evaluating itself with all variables known. In our example this corresponds to evaluating $\int_\Omega^e (\partial N_w)^T\sigma(\partial N_u r_u)\ d\Omega^e$
+* its linearization, cooresponding in our case to $\int_\Omega^e (\partial N_w)^T \frac{\partial \sigma}{\partial \varepsilon} (\partial N_u)\ d\Omega^e$.
 
 
 ### Simple example
