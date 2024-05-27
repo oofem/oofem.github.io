@@ -35,7 +35,7 @@ where
 * u,w are variables (fileds), represented by _Variable_ class instances
 * $\left[ (\partial w)^T \sigma (\partial u)\right] $ and $\left[ (w)^Tt \right]$ are Terms, parametrized (to be evaluated) by u,w, represented by classes _BTSigmaTerm_ and _NTfTerm_ (derived from parent _Term_ class).
 
-When term is evaluated, the interpolations of the test and uknown fields as well as the element geometry are substituted. In our example, the approximations on the element level are $u^e=\sum N_u r_u$ and $w^e=\sum N_w r_w$. As this in general yields to a nonlinear system of equations, the term on left hand side evaluates
+When term is evaluated, the interpolations of the test and uknown fields as well as the element geometry are substituted. In the following notation, the approximations on the element level are expressed as $u^e=\sum N_u r_u$ and $w^e=\sum N_w r_w$. As this in general yields to a nonlinear system of equations, the term on left hand side evaluates
 * residual contribution for given element, esentially evaluating itself with all variables known. In our example this corresponds to evaluating $\int_\Omega^e (\partial N_w)^T\sigma(\partial N_u r_u)\ d\Omega^e$
 * its linearization, cooresponding in our case to $\int_\Omega^e (\partial N_w)^T \frac{\partial \sigma}{\partial \varepsilon} (\partial N_u)\ d\Omega^e$.
 
