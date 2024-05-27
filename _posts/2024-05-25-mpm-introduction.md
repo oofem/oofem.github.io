@@ -141,11 +141,6 @@ problem.forceEquationNumbering()
 
 
 
-
-    5
-
-
-
 We are now approaching the part where we will use all the concepts:
 * Create sparse matrix instance (_lhs_) to hold stifness matrix 
 * The stifness matrix is assembled by integral _I1_ instance usiing its _assemble\_lhs_ method, that will integrate the linearization of our term over all elements in domain defined by integral domain.
