@@ -18,5 +18,7 @@ Particularly, the following posts are welcome:
 * Present your papers and research findings obtained with the help of OOFEM: Diseminate and share your results with OOFEM community.
 * Project-Related Announcements: Keep community informed about project milestones, releases, and other significant updates.
 
+To contribute, clone the [oofem.github.io](https://github.com/oofem/oofem.github.io) repository. Create new post in _posts directory and make a pull request. Please follow Minimal-mistakes and Jekyll [conventions and formatting](https://mmistakes.github.io/minimal-mistakes/docs/posts/).
+
 Remember, fostering a culture of knowledge sharing and collaboration will inspire users to actively participate and contribute to the OOFEM project. 🌟📝
 
