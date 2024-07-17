@@ -11,7 +11,7 @@ tags:
 This site is set up to provide a platform for blogging about the OOFEM project. 
 
 Particularly, the following posts are welcome:
-* Feature poreviews: Share sneak peeks of upcoming features or enhancements. This generates excitement and anticipation among your users.
+* Feature previews: Share sneak peeks of upcoming features or enhancements. This generates excitement and anticipation among your users.
 * New features: Inform the community about the latest features you’ve implemented. Explain how they work, their benefits, and how users can leverage them effectively.
 * Present your interesting work: Document and discuss challenges you’ve encountered when solving particular problem. Describe your model and present results as this can be
   both educational and engaging.
