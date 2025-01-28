@@ -11,8 +11,8 @@ tags:
 ## First steps with new OOFEM multi-physics module (MPM)
 
 What is MPM?
-MPM is new multi-physic OOFEM module, developed to make implementation of multi-physics problems more simple. 
-In this tutorial we will focus on symbolic MPM extension. This extension is somehow different from traditional OOFEM modules.
+MPM is new multi-physic OOFEM module, developed to make implementation of multi-physics problems more simple. In this tutorial we will focus on symbolic MPM extension. This extension is somehow different from traditional OOFEM modules.
+
 In traditional OOFEM problem setup, the user discretizes the problem using problem-specific elements, boundary conditions, etc. that provide necessary functionality to solve the problem.
 On the other hand, the symbolic MPM module allows to use universal, problem independent elements. These elements just define geometry. What is going to be evaluated is defined using **Terms**, that are evaluated on elements and integrated using **Integrals**. **Terms** can be evaluated on any element using user defined **Interpolations**. In this way, the problem definition is more like defining the weak form of the problem. 
      
@@ -134,7 +134,7 @@ The analytical solution (assuming only the bending moment contribution) is
 $w_{ex}=FL^3/(3EI) = 0.3*3^3/(3*1*0.3^3/12.)=1200$.
 We can see that linear approximation for this specific discretization does not give satisfactory result.
 
-Let's switch now to quadratic interpolation. The nice think here is that it is sufficient to change only two lines in input file to get solved the problem using quadratic interpolation. We just need to locate the records defining test and unknown fields and update the interpolation:
+Let's switch now to quadratic interpolation. The nice thing here is that it is sufficient to change only two lines in input file to get solved the problem using quadratic interpolation. We just need to locate the records defining test and unknown fields and update the interpolation:
 ```
 Variable name "u" interpolation "feiquad" type 1 quantity 0 size 2 dofs 2 1 2 # displacement 
 Variable name "w" interpolation "feiquad" type 1 quantity 0 size 2 dofs 2 1 2 # test function
