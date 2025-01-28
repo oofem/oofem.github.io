@@ -26,7 +26,7 @@ The basic design ideas behind MPM are following:
 * **Integral** represents the integral of term in a weak form. It can compute its contributions to the discrete set of equations. 
 
 The concept allows for parametrization with different element geometries and interpolations. Also, the components (interpolations, terms) can be reused/shared between different formulations.
-In the [previous post on mpm module](2024-05-25-mpm-introduction.md) I have introduced the Python interface of MPM module. In this post, I will illustrate mpm features on example set-up from traditional OOFEM input deck.  
+In the [previous post on mpm module](mpm-introduction) I have introduced the Python interface of MPM module. In this post, I will illustrate mpm features on example set-up from traditional OOFEM input deck.  
 
 We will consider the same linear 2D elasticity problem, defined by following weak form of equilibrium equations:
 
@@ -129,9 +129,9 @@ Save the above input file into demo.in file.
 ./oofem -f demo.in
 ```
 
-By examining the output file produced (demo.out) we can get the deflection of the cantilever as unknown displacement in y-direction of node 5 or 10. The computed deflection is $w_{lin}=264.01$.
+By examining the output file produced (demo.out) we can get the deflection of the cantilever as unknown displacement in y-direction of node 5 or 10. The computed deflection is $w_{lin}=264.0$.
 The analytical solution (assuming only the bending moment contribution) is   
-$w_{ex}=FL^3/(3EI) = 0.3*3^3/(3*1*0.3^3/12.)=1200$.
+$w_{ex}=FL^3/(3EI) = 0.3\times3^3/(3\times1\times0.3^3/12.)=1200$.
 We can see that linear approximation for this specific discretization does not give satisfactory result.
 
 Let's switch now to quadratic interpolation. The nice thing here is that it is sufficient to change only two lines in input file to get solved the problem using quadratic interpolation. We just need to locate the records defining test and unknown fields and update the interpolation:
