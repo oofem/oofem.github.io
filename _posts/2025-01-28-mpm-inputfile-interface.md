@@ -143,5 +143,7 @@ All the magic needed to introduce additional nodes on shared edges, setting up i
 
 Running the simulation using updated input deck provides the cantilever deflection equal to $w_q=916.5$, clearly demonstrating the superior convergence properties of quadratic interpolation over the linear one.
 
+The complete input deck can be found in [tests/mpm/mpms04.in](https://raw.githubusercontent.com/oofem/oofem/refs/heads/mpm2/tests/mpm/mpms04.in) file.
+
 With this I conclude today post on mpm module. Hope you enjoyed and stay tuned for following updates!
 
