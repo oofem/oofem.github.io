@@ -26,7 +26,7 @@ The basic design ideas behind MPM are following:
 * **Integral** represents the integral of term in a weak form. It can compute its contributions to the discrete set of equations. 
 
 The concept allows for parametrization with different element geometries and interpolations. Also, the components (interpolations, terms) can be reused/shared between different formulations.
-In the [previous post on mpm module](mpm-introduction) I have introduced the Python interface of MPM module. In this post, I will illustrate mpm features on example set-up from traditional OOFEM input deck.  
+In the [previous post on mpm module](../mpm-introduction/) I have introduced the Python interface of MPM module. In this post, I will illustrate mpm features on example set-up from traditional OOFEM input deck.  
 
 We will consider the same linear 2D elasticity problem, defined by following weak form of equilibrium equations:
 
@@ -145,5 +145,7 @@ Running the simulation using updated input deck provides the cantilever deflecti
 
 The complete input deck can be found in [tests/mpm/mpms04.in](https://raw.githubusercontent.com/oofem/oofem/refs/heads/mpm2/tests/mpm/mpms04.in) file.
 
-With this I conclude today post on mpm module. Hope you enjoyed and stay tuned for following updates!
+With this I conclude today post on mpm module. 
+Hope you enjoyed and stay tuned for following updates!
 
+You can leave a comment below to give a feedback.
