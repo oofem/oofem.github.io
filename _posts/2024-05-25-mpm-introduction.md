@@ -11,23 +11,23 @@ tags:
 ## First steps with new OOFEM multi-physics module (MPM)
 
 What is MPM?
-MPM is new multiphysic OOFEM module, developped to make implementation of multiphysics problems more simple. 
+MPM is new multi-physic OOFEM module, developed to make implementation of multi-physics problems more simple. 
 
 What are the design ideas behind MPM?
-* MPM defines **Interpolations**, **Variables**, **Terms**, **Integrals** as resuable blocks to create multiphysics formulations
-* **Variables** represent unknown fields (or test felds) in a weak form of the problem. The variable has its interpolation, type (scalar, vector) and physical meaning defined.
+* MPM defines **Interpolations**, **Variables**, **Terms**, **Integrals** as reusable blocks to create multi-physics formulations
+* **Variables** represent unknown fields (or test fields) in a weak form of the problem. The variable has its interpolation, type (scalar, vector) and physical meaning defined.
 * **Terms** represent an integrand in weak formulation to be evaluated (integrated). Term definition is independent on underlying element geometry and interpolation. It defines two key methods:
-    *  method to evaluate the term value, typycally contributing to RHS of discrete system.
+    *  method to evaluate the term value, typically contributing to RHS of discrete system.
     *  method to evaluate the consistent linearization of the term, so if Term is T(u), depending on unknown u, this term evaluates dT/du, which typically contributes to the LHS. 
 * **Interpolations** are representing different FE interpolations.
-* **Integral** represents the integral of term in a weak form. It can compute its contributions to the dicrete set of equations. 
+* **Integral** represents the integral of term in a weak form. It can compute its contributions to the discrete set of equations. 
 
 The concept allows for parametrization with different element geometries and interpolations. Also, the components (interpolations, terms) can be reused/shared between different formulations.
-I will ilustrate the concept using oofem python bindings, which allows for fast prototyping.
+I will illustrate the concept using oofem python bindings, which allows for fast prototyping.
 
 In the example below, we reuse already defined terms in oofem, but it is possible to define your own terms, interpolations, etc.
 
-As an example, consider the weak form of equlibrium equations:
+As an example, consider the weak form of equilibrium equations:
 
 $$ \int_\Omega (\partial w)^T \sigma (\partial u)\ d\Omega = \int_\Omega w^T \rho g d\Omega + \int_\Gamma w^T t d\Gamma $$
 
@@ -35,9 +35,9 @@ where
 * u,w are variables (fileds), represented by _Variable_ class instances
 * $\left[ (\partial w)^T \sigma (\partial u)\right] $ and $\left[ (w)^Tt \right]$ are Terms, parametrized (to be evaluated) by u,w, represented by classes _BTSigmaTerm_ and _NTfTerm_ (derived from parent _Term_ class).
 
-When term is evaluated, the interpolations of the test and uknown fields as well as the element geometry are substituted. In the following notation, the approximations on the element level are expressed as $u^e=\sum N_u r_u$ and $w^e=\sum N_w r_w$. As this in general yields to a nonlinear system of equations, the term on left hand side evaluates
-* residual contribution for given element, esentially evaluating itself with all variables known. In our example this corresponds to evaluating $\int_\Omega^e (\partial N_w)^T\sigma(\partial N_u r_u)\ d\Omega^e$
-* its linearization, cooresponding in our case to $\int_\Omega^e (\partial N_w)^T \frac{\partial \sigma}{\partial \varepsilon} (\partial N_u)\ d\Omega^e$.
+When term is evaluated, the interpolations of the test and unknown fields as well as the element geometry are substituted. In the following notation, the approximations on the element level are expressed as $u^e=\sum N_u r_u$ and $w^e=\sum N_w r_w$. As this in general yields to a nonlinear system of equations, the term on left hand side evaluates
+* residual contribution for given element, essentially evaluating itself with all variables known. In our example this corresponds to evaluating $\int_\Omega^e (\partial N_w)^T\sigma(\partial N_u r_u)\ d\Omega^e$
+* its linearization, corresponding in our case to $\int_\Omega^e (\partial N_w)^T \frac{\partial \sigma}{\partial \varepsilon} (\partial N_u)\ d\Omega^e$.
 
 
 ### Simple example
@@ -142,8 +142,8 @@ problem.forceEquationNumbering()
 
 
 We are now approaching the part where we will use all the concepts:
-* Create sparse matrix instance (_lhs_) to hold stifness matrix 
-* The stifness matrix is assembled by integral _I1_ instance usiing its _assemble\_lhs_ method, that will integrate the linearization of our term over all elements in domain defined by integral domain.
+* Create sparse matrix instance (_lhs_) to hold stiffness matrix 
+* The stiffness matrix is assembled by integral _I1_ instance using its _assemble\_lhs_ method, that will integrate the linearization of our term over all elements in domain defined by integral domain.
 
 
 ```python
@@ -191,4 +191,4 @@ print ("Displacement vector = ", r)
     Displacement vector =  <oofempy.FloatArray: {1, -2.77556e-17, 1, -0.3, -0.3, }>
 
 
-Hope you enjoed!
+Hope you enjoyed!
