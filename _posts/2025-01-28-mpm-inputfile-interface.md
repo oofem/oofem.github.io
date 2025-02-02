@@ -4,8 +4,7 @@ date: 2025-01-28
 author: Borek Patzak
 categories:
   - blog
-tags:
-  - tutorial mpm
+tags: tutorial mpm
 ---
 
 ## First steps with new OOFEM multi-physics module (MPM)
@@ -40,6 +39,7 @@ When term is evaluated, the interpolations of the test and unknown fields as wel
 
 
 ### Simple example
+
 We will use OOFEM input deck to demonstrate the concept of setting up the problem of cantilever beam fixed on the left-hand side and loaded by distributed loading on free, right-hand edge.
 
 ```
@@ -128,11 +128,9 @@ Save the above input file into demo.in file.
 ```
 ./oofem -f demo.in
 ```
+The complete input deck can be found in [tests/mpm/mpms03.in](https://raw.githubusercontent.com/oofem/oofem/refs/heads/mpm2/tests/mpm/mpms03.in) file.
 
-By examining the output file produced (demo.out) we can get the deflection of the cantilever as unknown displacement in y-direction of node 5 or 10. The computed deflection is $w_{lin}=264.0$.
-The analytical solution (assuming only the bending moment contribution) is   
-$w_{ex}=FL^3/(3EI) = 0.3\times3^3/(3\times1\times0.3^3/12.)=1200$.
-We can see that linear approximation for this specific discretization does not give satisfactory result.
+### Simple example - quadratic interpolation
 
 Let's switch now to quadratic interpolation. The nice thing here is that it is sufficient to change only two lines in input file to get solved the problem using quadratic interpolation. We just need to locate the records defining test and unknown fields and update the interpolation:
 ```
@@ -140,12 +138,22 @@ Variable name "u" interpolation "feiquad" type 1 quantity 0 size 2 dofs 2 1 2 # 
 Variable name "w" interpolation "feiquad" type 1 quantity 0 size 2 dofs 2 1 2 # test function
 ```
 All the magic needed to introduce additional nodes on shared edges, setting up integration rules, etc. will happen automatically for you.
-
-Running the simulation using updated input deck provides the cantilever deflection equal to $w_q=916.5$, clearly demonstrating the superior convergence properties of quadratic interpolation over the linear one.
-
 The complete input deck can be found in [tests/mpm/mpms04.in](https://raw.githubusercontent.com/oofem/oofem/refs/heads/mpm2/tests/mpm/mpms04.in) file.
 
-With this I conclude today post on mpm module. 
-Hope you enjoyed and stay tuned for following updates!
+### Simple example - results & conclusions
+The analytical solution (beam theory, assuming only the bending moment contribution) is   
+$w_{ex}=FL^3/(3EI) = 0.3\times3^3/(3\times1\times0.3^3/12.)=1200$.
 
+The resulting end deflection (node 10), obtained with linear approximation is $w_{lin}=345.03$.
+The deflection obtained using quadratic interpolation is $w_q=1178.8$, clearly demonstrating the superior convergence properties of quadratic interpolation over the linear one.
+
+|                |  linear approx. | quadratic approx.  | exact (beam theory) |
+|----------------|-----------------|--------------------|---------------------|
+| End deflection | 345.03          | 1178.8             | 1200.0              |   
+
+
+However, the purpose of this post was to illustrate the power of MPM symbolic module and its capabilities. 
+With this I conclude today post on mpm module. 
+
+Hope you enjoyed and stay tuned for following updates!
 You can leave a comment below to give a feedback.
