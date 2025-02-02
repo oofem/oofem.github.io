@@ -4,8 +4,7 @@ date: 2024-05-25
 author: Borek Patzak
 categories:
   - blog
-tags:
-  - tutorial mpm
+tags: tutorial mpm
 ---
 
 ## First steps with new OOFEM multi-physics module (MPM)
