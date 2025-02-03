@@ -1,5 +1,5 @@
 ---
-title: "MPM: Example of Incompressible elasticity with mpm symbolic module"
+title: "Example of Incompressible elasticity with mpm symbolic module"
 date: 2025-02-02
 author: Borek Patzak
 categories:
