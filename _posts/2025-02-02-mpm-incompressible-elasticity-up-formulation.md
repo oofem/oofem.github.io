@@ -67,7 +67,7 @@ The Cook’s membrane is a standard benchmark problem.
  and its dimensions, as well as the material parameters
  and boundary conditions, are shown in figure bellow
  
- ![Cook membrane geometry and boundary conditions](/assets/images/cookGeometry.png)
+ ![Cook membrane geometry and boundary conditions]({{ site.url }}{{ site.baseurl }}/assets/images/cookGeometry.png)
 
 The complete OOFEM input deck for mesh consisting of 4x4 elements can be 
 ```
@@ -117,8 +117,6 @@ PiecewiseLinFunction 2 nPoints 4 t 4 -10. 0. 1. 5. f(t) 4 0. 0. 1.0 1.0
 set 1 elementranges  {(1 4)}
 set 2 elementranges  {(5 6)}
 set 3 elementedges 4 1 4 3 4
-
-
 ```
 The complete input deck can be found in [tests/mpm/cook4.in](https://raw.githubusercontent.com/oofem/oofem/refs/heads/mpm2/tests/mpm/cook4.in) file. 
 
@@ -129,7 +127,7 @@ To illustrate the convergence, sequence of uniform meshes of the plate is consid
 
 The figure below shows the vertical displacement of the plane tip plotted against the number of element segments along each side. The solution is compared to reference solution [^1].
 
-![Cook membrane convergence graph](/assets/images/cookConvergence.png)
+![Cook membrane convergence graph]({{ site.url }}{{ site.baseurl }}/assets/images/cookConvergence.png)
 
 With this I conclude today post on mpm module. 
 Hope you enjoyed and stay tuned for following updates!
