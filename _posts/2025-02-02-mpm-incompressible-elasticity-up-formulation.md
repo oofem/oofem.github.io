@@ -11,13 +11,13 @@ tags: tutorial mpm
 A formulation of the elasticity problem able to represent the incompressible behavior can be written using mixed approach involving pressure and displacement fields
 
 $$\nabla p + 2\mu\nabla\cdot\rm{dev}[\nabla^s u]+f = 0\;\rm{in}\ \Omega$$
-$${1\over K}p-\nabla\cdot u=0\;\rm{in}\ \Omega$$
+$$\frac{1}{K}p-\nabla\cdot u=0\;\rm{in}\ \Omega$$
 $$u=\bar u\;\rm{on}\ \Gamma_u $$
 $$\sigma n = \bar t\;\rm{on}\ \Gamma_t$$
 
 The weak form of the above equations can be written as
 $$\int_\Omega\overbrace{2\mu\nabla^sw:\rm{dev}[\nabla^su]}^{T_1}\ d\Omega-\int_\Omega\overbrace{ \nabla\cdot w\ p}^{T_2}\ d\Omega=\int_{\Gamma_t}\overbrace{w\cdot \bar t}^{T_3}\ d\Gamma $$
-$$-\int_\Omega\underbrace{q\ \nabla\cdot u}_{T_2^T}\ d\Omega+\int_\Omega\underbrace{{1\over K}q\ p}_{T_4}\ d\Omega = 0
+$$-\int_\Omega\underbrace{q\ \nabla\cdot u}_{T_2^T}\ d\Omega+\int_\Omega\underbrace{\frac{1}{K}q\ p}_{T_4}\ d\Omega = 0
 $$
 where 
 * $u, p$ are unknown displacement and pressure fields (_Variables_).
