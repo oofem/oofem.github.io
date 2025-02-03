@@ -39,7 +39,7 @@ Variable name "p" interpolation "feilin"  type 0 quantity 3 size 1 dofs 1 11
 Variable name "q" interpolation "feilin" type 0 quantity 3 size 1 dofs 1 11 
 ```
 where _interpolation_ determines the interpolation used for specific field. Here we use quadratic approximation (_interpolation "feiquad"_) for displacement field and related test field and linear approximation (_interpolation "feilin"_) for pressure.
-The $u, w$ fields are vector fields (_type 1_) with physical meaning of displacement (_quantity 0_) and two degrees of freedom (_size 2 dofs 2 1 2_).
+The $u, w$ fields are vector fields (_type 1_) with physical meaning of displacement (_quantity 0_) and two degrees of freedom (_size 2 dofs 2 1 2_). And $p, q$ are scalar fields (_type 0_) with physical meaning of pressure (_quantity 3 size 1 dofs 1 11_).
 
 The weak form above consists of several terms to be evaluated
 * $T_1$: This is represented by _BTSigmaTerm_, evaluated for $w$ test field and $u$ as unknown field, under plain strain assumptions (_mmode 7_)
