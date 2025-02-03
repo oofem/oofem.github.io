@@ -31,12 +31,12 @@ In order to obtain stable results, the approximations should satisfy Babuška-Br
 To satisfy the B-B condition, the approximation order of displacement should be higher than that of hydrostatic pressure.
 In the following  we will consider 2D case. 
 
-In the input deck, the _Variables_ ($u,p,w,q) can be set up using following syntax
+In the input deck, the _Variables_ ($u,p,w,q$) can be set up using following syntax
 ```
 Variable name "u" interpolation "feiquad" type 1 quantity 0 size 2 dofs 2 1 2 
 Variable name "w" interpolation "feiquad" type 1 quantity 0 size 2 dofs 2 1 2 
 Variable name "p" interpolation "feilin"  type 0 quantity 3 size 1 dofs 1 11  
-Variable name "dp" interpolation "feilin" type 0 quantity 3 size 1 dofs 1 11 
+Variable name "q" interpolation "feilin" type 0 quantity 3 size 1 dofs 1 11 
 ```
 where _interpolation_ determines the interpolation used for specific field. Here we use quadratic approximation (_interpolation "feiquad"_) for displacement field and related test field and linear approximation (_interpolation "feilin"_) for pressure.
 The $u, w$ fields are vector fields (_type 1_) with physical meaning of displacement (_quantity 0_) and two degrees of freedom (_size 2 dofs 2 1 2_).
@@ -52,8 +52,8 @@ The weak form above consists of several terms to be evaluated
   ```
 * Similarly, we set up remaining three terms $T_3, T_2^T$ and $T_4$:
   ```
-  NTamTBTerm 3 variable "u" testvariable "dp" mmode 7 atype 28
-  NTcN 4 variable "p" testvariable "dp" mmode 7 ctype 27
+  NTamTBTerm 3 variable "u" testvariable "q" mmode 7 atype 28
+  NTcN 4 variable "p" testvariable "q" mmode 7 ctype 27
   NTfTerm 5 variable "u" testvariable "w" mmode 6 flux 2 0. 6.25
   ```
 The terms are integrated over specific domains ($\Omega,\ \Gamma_t$), defined using corresponding sets (defined bellow in the example):
@@ -83,11 +83,11 @@ test nsteps 1 nvariables 4 nterms 5 nintegrals 5 lhsterms 4 1 2 3 4 rhsterms 1 5
 Variable name "u" interpolation "feiquad" type 1 quantity 0 size 2 dofs 2 1 2 # displacement 
 Variable name "w" interpolation "feiquad" type 1 quantity 0 size 2 dofs 2 1 2 # test function
 Variable name "p" interpolation "feilin"  type 0 quantity 3 size 1 dofs 1 11 # pressure 
-Variable name "dp" interpolation "feilin" type 0 quantity 3 size 1 dofs 1 11 # test function
+Variable name "q" interpolation "feilin" type 0 quantity 3 size 1 dofs 1 11 # test function
 BTSigmaTerm 1 variable "u"  testvariable "w" mmode 7
 BTamNTerm 2 variable "p" testvariable "w" mmode 7 atype 28
-NTamTBTerm 3 variable "u" testvariable "dp" mmode 7 atype 28
-NTcN 4 variable "p" testvariable "dp" mmode 7 ctype 27
+NTamTBTerm 3 variable "u" testvariable "q" mmode 7 atype 28
+NTcN 4 variable "p" testvariable "q" mmode 7 ctype 27
 NTfTerm 5 variable "u" testvariable "w" mmode 6 flux 2 0. 6.25
 #NTfTerm 5 variable "u" testvariable "w" mmode 6 flux 2 0. 31.25
 Integral 1 domain 1 set 1 term 1
