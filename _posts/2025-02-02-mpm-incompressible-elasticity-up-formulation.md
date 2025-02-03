@@ -120,6 +120,9 @@ set 3 elementedges 4 1 4 3 4
 
 
 ```
+The complete input deck can be found in [tests/mpm/cook4.in](https://raw.githubusercontent.com/oofem/oofem/refs/heads/mpm2/tests/mpm/cook4.in) file. 
+
+Note: At the time of writing, the oofem version from mpm2 branch is required to run the example.
 
 To illustrate the convergence, sequence of uniform meshes of the plate is considered,
  starting from a mesh consisting 2x2 elements and proceeding by uniform refinement.
@@ -131,7 +134,7 @@ The figure below shows the vertical displacement of the plane tip plotted agains
 With this I conclude today post on mpm module. 
 Hope you enjoyed and stay tuned for following updates!
 
-You can leave a comment below to give a feedback.
+You are welcome to leave a comment below to give a feedback.
 
 ### References
 [^1]: Ignacio Romero, Manfred Bischoff, Incompatible Bubbles: A non-conforming finite element formulation for linear elasticity, Computer Methods in Applied Mechanics and Engineering, Volume 196, Issues 9–12, 2007, Pages 1662-1672, ISSN 0045-7825, https://doi.org/10.1016/j.cma.2006.09.010.
