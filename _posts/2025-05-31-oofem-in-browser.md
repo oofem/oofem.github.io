@@ -19,7 +19,7 @@ Check out the [OOFEM python tutorial](https://oofem.github.io/jupyter-demos/lab/
 
 The support by [Václav Šmilauer](https://github.com/eudoxos) is highly acknowledged.
 
-<img src="/assets/oofem-jupyterlite-screenshot.png" alt="Screenshot of JupyterLite with oofem" width="50%" height="50%">
+<img src="/assets/images/oofem-jupyterlite-screenshot.png" alt="Screenshot of JupyterLite with oofem" width="50%" height="50%">
 
 
 ____
