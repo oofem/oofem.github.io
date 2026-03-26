@@ -1,6 +1,6 @@
 ---
 title: "Symbolic MPM mode"
-date: 2025-02-02
+date: 2026-03-06
 author: Borek Patzak
 categories:
   - blog
