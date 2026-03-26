@@ -25,13 +25,16 @@ This approach combines the flexibility of symbolic definitions with the performa
 Let's start with a simple example of 1D stationary heat transport:
 
 $$\lambda\frac{d^2T}{dx^2} + Q = 0$$
+
 $$T=\bar{T}\ \rm{on}\ \Gamma_d$$
+
 $$q\cdot n=\bar{q}\ \rm{on}\ \Gamma_q$$
 
 
 ### Weak Form
 
 The weak form can be written as
+
 $$ \int_\Omega\underbrace{\frac{d\delta T}{dx}\lambda\frac{dT}{dx}}_{T_1}-\int_{\Gamma_q}\underbrace{\delta T\bar{q}}_{T2} + \int_\Omega \underbrace{\delta TQ}_{T3}=0$$
 
 ### Variable Definition
